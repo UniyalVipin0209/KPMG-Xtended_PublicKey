@@ -1,0 +1,18 @@
+.mainbox{
+    margin: auto;
+        width: 80vw;
+        padding: 10px;
+        padding-right: 3rem;
+}
+.display-table{
+        width:"86%";
+        border:1px solid #4E24DF;
+        font-family: "loto";
+        font-size: .68rem;        
+        
+}
+.ant-table-thead > tr > th{
+    background: #4E24DF!important;
+    color: #edeae9!important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular';
+}
