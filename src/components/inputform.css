@@ -1,18 +1,46 @@
 .mainbox{
-    margin: auto;
-        width: 80vw;
+          margin: auto;
+        
+       
         padding: 10px;
         padding-right: 3rem;
 }
-.display-table{
-        width:"86%";
-        border:1px solid #4E24DF;
-        font-family: "loto";
-        font-size: .68rem;        
-        
+.mainbox .table-container{
+    overflow-y: auto!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ant-table{
+    border: 1px solid  #4E24DF!important;
 }
 .ant-table-thead > tr > th{
     background: #4E24DF!important;
     color: #edeae9!important;
     font-family: 'Lucida Sans', 'Lucida Sans Regular';
+   
+   
+}
+.ant-btn-primary{
+    background: #4E24DF!important;
+    border-color:#4E24DF!important;;
+}
+.col1,.col2{
+    text-align: left!important;
+    width:50%!important;
+    display: inherit!important;
+}
+
+
+.ant-form-item-label > label{
+    font-weight: 500!important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular';
+
+}
+/**error message**/
+.ant-form-item-explain .ant-form-item-explain-connected{
+    text-align: left!important;
+}
+.ant-form-item-explain-error{
+    color: #4E24DF!important;
 }

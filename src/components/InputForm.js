@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Select, Form, Input, Table } from "antd";
+import {
+  Button,
+  Select,
+  Form,
+  Input,
+  Table,
+  InputNumber,
+  Row,
+  Col,
+  Space,
+} from "antd";
 import "./inputform.css";
 const { Option } = Select;
 
@@ -25,11 +35,6 @@ const InputForm = () => {
       title: "Index",
       dataIndex: "index",
       key: "index",
-    },
-    {
-      title: "Path",
-      dataIndex: "path",
-      key: "path",
     },
   ];
 
@@ -77,11 +82,17 @@ const InputForm = () => {
   };
 
   const onFinish = (values) => {
+    console.log("Values ::", values);
     const params = {
       xPubKey: values.extendedpublickey,
       count: values.keyCount,
+      accountInPath: values.accountInPath,
+      changeInPath: values.changeInPath,
     };
     try {
+      console.log("OnFinish :", params);
+      const keyCountInt = parseInt(params.keyCount);
+      params.keyCount = keyCountInt;
       console.log("OnFinish :", params);
       PostData(params);
     } catch (error) {
@@ -107,7 +118,7 @@ const InputForm = () => {
           span: 8,
         }}
         wrapperCol={{
-          span: 16,
+          span: 12,
         }}
         initialValues={{
           remember: true,
@@ -122,7 +133,7 @@ const InputForm = () => {
           rules={[
             {
               required: true,
-              message: "Please input your extended public key!",
+              message: "Please provide the input for extended public key",
             },
           ]}
         >
@@ -135,28 +146,39 @@ const InputForm = () => {
           rules={[
             {
               required: true,
+              message: "Please provide the input for key count",
             },
           ]}
         >
-          <Select
-            placeholder="Select a option and change input text above"
-            onChange={onCountChange}
-            allowClear
-          >
-            <Option disabled="true" value="---Please Select---">
-              Please Select
-            </Option>
-            <Option value="1">1</Option>
-            <Option value="2">2</Option>
-            <Option value="3">3</Option>
-            <Option value="4">4</Option>
-            <Option value="5">5</Option>
-            <Option value="10">10</Option>
-            <Option value="15">15</Option>
-            <Option value="20">20</Option>
-            <Option value="25">25</Option>
-            <Option value="30">30</Option>
-          </Select>
+          <InputNumber min={1} max={100} className="col1" />
+        </Form.Item>
+
+        <Form.Item
+          label="Account In Path"
+          name="accountPath"
+          allowClear
+          rules={[
+            {
+              required: true,
+              message: "Please provide the input for account path!",
+            },
+          ]}
+        >
+          <InputNumber min={1} max={100} className="col1" />
+        </Form.Item>
+
+        <Form.Item
+          label="Change In Path"
+          name="changePath"
+          allowClear
+          rules={[
+            {
+              required: true,
+              message: "Please provide the input for change path!",
+            },
+          ]}
+        >
+          <InputNumber min={1} max={100} className="col2" />
         </Form.Item>
 
         <Form.Item
@@ -172,8 +194,9 @@ const InputForm = () => {
       </Form>
 
       {result && (
-        <div className="display-table " >
-          <Table dataSource={result} columns={columns} />
+        <div className="table-container">
+          {/* // <div className="display-table "> */}
+          <Table dataSource={result} scroll={{ x: 600 }} columns={columns} />
         </div>
       )}
     </div>
