@@ -164,7 +164,7 @@ const InputForm = () => {
             },
           ]}
         >
-          <InputNumber min={1} max={100} className="col1" />
+          <InputNumber min={0} max={100} className="col1" />
         </Form.Item>
 
         <Form.Item
@@ -178,7 +178,7 @@ const InputForm = () => {
             },
           ]}
         >
-          <InputNumber min={1} max={100} className="col2" />
+          <InputNumber min={0} max={100} className="col2" />
         </Form.Item>
 
         <Form.Item
